@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile
+      run: docker build . --file ./Paramount-student/studentapp-main/Dockerfile
     
     - name: Build and push docker image
       uses: mr-smithers-excellent/docker-build-push@v5
