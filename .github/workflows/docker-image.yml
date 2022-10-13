@@ -2,9 +2,8 @@ name: Docker Image CI
 ##
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - 'main'
 
 jobs:
   build:
@@ -26,6 +25,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
+          context: ./studentapp-main
           push: true
           tags: mshallom/tony-app:latest
 ###
