@@ -14,14 +14,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker-compose up --build -f ./Paramount-student/studentapp-main/Dockerfile
-    
-    - name: Build and push docker image
-      uses: mr-smithers-excellent/docker-build-push@v5
-      with:
-        image: tony06/student-app
-        registry: docker.io
+    - name: docker login
+      env:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-      
+      run: |
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - name: Build the Docker Image
+      run: docker build . --file Dockerfile --tag chamodshehanka/node-test:$(date +%s)
+
+    - name: Docker Push
+      run: docker push ${{secrets.DOCKER_USERNAME}}/tony06/student-app
