@@ -1,1 +1,1 @@
-# Paramount-student
+# Paramount
